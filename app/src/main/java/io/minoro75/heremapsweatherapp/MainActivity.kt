@@ -1,8 +1,8 @@
 package io.minoro75.heremapsweatherapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import io.minoro75.heremapsweatherapp.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import io.minoro75.heremapsweatherapp.ui.main.CitySelectionFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, CitySelectionFragment.newInstance())
                 .commitNow()
         }
     }
