@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_city_selection">
+
+    <fragment
+        android:id="@+id/nav_city_selection"
+        android:name="io.minoro75.heremapsweatherapp.ui.main.CitySelectionFragment"
+        tools:layout="@layout/fragment_city_selection" >
+        <action
+            android:id="@+id/action_nav_city_selection_to_nav_city_weather"
+            app:destination="@id/nav_city_weather" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_city_weather"
+        android:name="io.minoro75.heremapsweatherapp.cityWeatherFragment.CityWeatherFragment"
+        tools:layout="@layout/fragment_city_weather" />
+</navigation>
