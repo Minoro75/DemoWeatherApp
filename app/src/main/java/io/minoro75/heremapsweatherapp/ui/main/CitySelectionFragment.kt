@@ -17,7 +17,7 @@ class CitySelectionFragment : Fragment() {
     private lateinit var viewModel: CitySelectionViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.city_selection_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_city_selection, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
