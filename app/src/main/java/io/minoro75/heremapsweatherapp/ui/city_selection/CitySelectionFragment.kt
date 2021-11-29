@@ -30,10 +30,10 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermissions()
-        binding.imageButton.setOnClickListener {
+        binding.ibGetCurrentLocation.setOnClickListener {
             getDeviceLocation()
         }
-        binding.button.setOnClickListener {
+        binding.btGoToDetails.setOnClickListener {
             findNavController().navigate(
                 CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
                     viewModel.city.value
@@ -41,7 +41,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             )
         }
         viewModel.city.observe(viewLifecycleOwner, {
-            binding.autoCompleteTextView.setText(viewModel.city.value)
+            binding.actvCityName.setText(viewModel.city.value)
         })
     }
 
