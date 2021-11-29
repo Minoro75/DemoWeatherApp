@@ -23,6 +23,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', 'API_KEY', "$API_WEATHER_KEY_VALUE"
+            buildConfigField 'String', 'API_SERVER', "$API_SERVER_VALUE"
+            buildConfigField 'String', 'API_CALL', "$API_WEATHER_VALUE"
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -57,6 +63,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
     implementation 'com.google.code.gson:gson:2.8.9'
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     //hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
