@@ -1,4 +1,4 @@
-package io.minoro75.heremapsweatherapp.cityWeatherFragment
+package io.minoro75.heremapsweatherapp.ui.city_weather
 
 import android.os.Bundle
 import android.view.LayoutInflater

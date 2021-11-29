@@ -1,8 +1,9 @@
-package io.minoro75.heremapsweatherapp
+package io.minoro75.heremapsweatherapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import io.minoro75.heremapsweatherapp.cityWeatherFragment.CityWeatherFragment
+import io.minoro75.heremapsweatherapp.R
+import io.minoro75.heremapsweatherapp.ui.city_weather.CityWeatherFragment
 
 class MainActivity : AppCompatActivity() {
 
