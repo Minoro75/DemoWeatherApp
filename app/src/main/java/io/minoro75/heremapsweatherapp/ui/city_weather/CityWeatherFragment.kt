@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.heremapsweatherapp.R
 import io.minoro75.heremapsweatherapp.databinding.FragmentCityWeatherBinding
@@ -32,6 +33,10 @@ class CityWeatherFragment : Fragment(R.layout.fragment_city_weather) {
                         binding.tvCurrentWeatherTemp.text = it.data?.first()?.temperature
                         binding.tvCurrentDate.text = it.data?.first()?.utcTime
                         binding.tvCurrentWeatherDescription.text = it.data?.first()?.description
+                        Glide.with(requireContext())
+                            .load(it.data?.first()?.iconLink)
+                            .centerCrop()
+                            .into(binding.ivCurrentWeatherIcon)
                     }
                     is Status.ERROR -> {
                         Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
