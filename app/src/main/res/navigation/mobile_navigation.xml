@@ -9,18 +9,20 @@
         android:id="@+id/nav_city_selection"
         android:name="io.minoro75.heremapsweatherapp.ui.city_selection.CitySelectionFragment"
         android:label="City Selection"
-        tools:layout="@layout/fragment_city_selection" >
+        tools:layout="@layout/fragment_city_selection">
         <action
             android:id="@+id/action_nav_city_selection_to_nav_city_weather"
             app:destination="@id/nav_city_weather"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:launchSingleTop="true" />
-        <argument
-            android:name="city"
-            app:argType="string" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="city"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
 
     <fragment
