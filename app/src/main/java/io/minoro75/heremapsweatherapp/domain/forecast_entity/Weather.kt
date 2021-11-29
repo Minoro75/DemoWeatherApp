@@ -1,4 +1,4 @@
-package io.minoro75.heremapsweatherapp.domain
+package io.minoro75.heremapsweatherapp.domain.forecast_entity
 
 import com.squareup.moshi.JsonClass
 
