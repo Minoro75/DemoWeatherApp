@@ -29,5 +29,9 @@
         android:id="@+id/nav_city_weather"
         android:name="io.minoro75.heremapsweatherapp.ui.city_weather.CityWeatherFragment"
         android:label="City Weather"
-        tools:layout="@layout/fragment_city_weather" />
+        tools:layout="@layout/fragment_city_weather" >
+        <argument
+            android:name="city"
+            app:argType="string" />
+    </fragment>
 </navigation>

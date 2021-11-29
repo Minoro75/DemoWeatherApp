@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.heremapsweatherapp.R
@@ -17,14 +18,14 @@ import kotlinx.coroutines.launch
 class CityWeatherFragment : Fragment(R.layout.fragment_city_weather) {
 
     private val binding: FragmentCityWeatherBinding by viewBinding()
-
+    private val args: CityWeatherFragmentArgs by navArgs()
     private val viewModel: CityWeatherViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
-            viewModel.getWeatherInCity("Boston")
+            viewModel.getWeatherInCity(args.city)
             viewModel.weather.observe(viewLifecycleOwner, {
                 when (it.status) {
                     is Status.SUCCESS -> {
