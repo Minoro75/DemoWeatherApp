@@ -1,9 +1,10 @@
-package io.minoro75.heremapsweatherapp
+package io.minoro75.heremapsweatherapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import io.minoro75.heremapsweatherapp.R
 import io.minoro75.heremapsweatherapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
