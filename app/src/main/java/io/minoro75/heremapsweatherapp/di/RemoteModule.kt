@@ -1,5 +1,6 @@
 package io.minoro75.heremapsweatherapp.di
 
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +21,10 @@ object RemoteModule {
     @Provides
     fun provideBaseUrl() =
         BuildConfig.API_SERVER
+
+    @Provides
+    fun provideMoshi(): Moshi =
+        Moshi.Builder().build()
 
     @Provides
     @Singleton

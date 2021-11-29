@@ -1,12 +1,15 @@
 package io.minoro75.heremapsweatherapp.domain
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class ForecastLocation(
-    val city: String,
-    val country: String,
-    val distance: Int,
-    val forecast: List<Weather>,
-    val latitude: Double,
-    val longitude: Double,
-    val state: String,
-    val timezone: Int
+    var forecast: List<Weather>,
+    var country: String,
+    var state: String,
+    var city: String,
+    var latitude: Double,
+    var longitude: Double,
+    var distance: Int,
+    var timezone: Int
 )
