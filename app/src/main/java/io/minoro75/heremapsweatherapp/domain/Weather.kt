@@ -1,0 +1,33 @@
+package io.minoro75.heremapsweatherapp.domain
+
+data class Weather(
+    val airDescription: String,
+    val airInfo: String,
+    val beaufortDescription: String,
+    val beaufortScale: String,
+    val comfort: String,
+    val dayOfWeek: String,
+    val daySegment: String,
+    val daylight: String,
+    val description: String,
+    val dewPoint: String,
+    val humidity: String,
+    val icon: String,
+    val iconLink: String,
+    val iconName: String,
+    val precipitationDesc: String,
+    val precipitationProbability: String,
+    val rainFall: String,
+    val skyDescription: String,
+    val skyInfo: String,
+    val snowFall: String,
+    val temperature: String,
+    val temperatureDesc: String,
+    val utcTime: String,
+    val visibility: String,
+    val weekday: String,
+    val windDesc: String,
+    val windDescShort: String,
+    val windDirection: String,
+    val windSpeed: String
+)
