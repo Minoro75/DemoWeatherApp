@@ -23,6 +23,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', 'API_KEY', "$API_WEATHER_KEY_VALUE"
+            buildConfigField 'String', 'API_SERVER', "$API_SERVER_VALUE"
+            buildConfigField 'String', 'API_CALL', "$API_WEATHER_VALUE"
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
