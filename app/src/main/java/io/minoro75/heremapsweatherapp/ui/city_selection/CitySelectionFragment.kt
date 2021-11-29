@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -29,9 +30,19 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermissions()
-        binding.imageButton.setOnClickListener {
+        binding.ibGetCurrentLocation.setOnClickListener {
             getDeviceLocation()
         }
+        binding.btGoToDetails.setOnClickListener {
+            findNavController().navigate(
+                CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
+                    viewModel.city.value
+                )
+            )
+        }
+        viewModel.city.observe(viewLifecycleOwner, {
+            binding.actvCityName.setText(viewModel.city.value)
+        })
     }
 
     private fun requestPermissions() {
