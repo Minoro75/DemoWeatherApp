@@ -30,11 +30,16 @@ class CityWeatherFragment : Fragment(R.layout.fragment_city_weather) {
                 when (it.status) {
                     is Status.SUCCESS -> {
                         binding.tvCurrentWeatherTemp.text = it.data?.first()?.temperature
+                        binding.tvCurrentDate.text = it.data?.first()?.utcTime
+                        binding.tvCurrentWeatherDescription.text = it.data?.first()?.description
                     }
                     is Status.ERROR -> {
                         Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
+            })
+            viewModel.city.observe(viewLifecycleOwner, {
+                binding.tvCurrentLocation.text = it
             })
         }
     }
