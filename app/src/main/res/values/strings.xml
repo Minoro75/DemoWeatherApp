@@ -1,3 +1,451 @@
 <resources>
     <string name="app_name">HereMaps Weather App</string>
+    <string-array name="alabama_cities_list">
+        <item>Alexander City</item>
+        <item>Andalusia</item>
+        <item>Anniston</item>
+        <item>Athens</item>
+        <item>Atmore</item>
+        <item>Auburn</item>
+        <item>Bessemer</item>
+        <item>Birmingham</item>
+        <item>Chickasaw</item>
+        <item>Clanton</item>
+        <item>Cullman</item>
+        <item>Decatur</item>
+        <item>Demopolis</item>
+        <item>Dothan</item>
+        <item>Enterprise</item>
+        <item>Eufaula</item>
+        <item>Florence</item>
+        <item>Fort Payne</item>
+        <item>Gadsden</item>
+        <item>Greenville</item>
+        <item>Guntersville</item>
+        <item>Huntsville</item>
+        <item>Jasper</item>
+        <item>Marion</item>
+        <item>Mobile</item>
+        <item>Montgomery</item>
+        <item>Opelika</item>
+        <item>Ozark</item>
+        <item>Phenix City</item>
+        <item>Prichard</item>
+        <item>Scottsboro</item>
+        <item>Selma</item>
+        <item>Sheffield</item>
+        <item>Sylacauga</item>
+        <item>Talladega</item>
+        <item>Troy</item>
+        <item>Tuscaloosa</item>
+        <item>Tuscumbia</item>
+        <item>Tuskegee</item>
+    </string-array>
+    <string-array name="alaska_cities_list">
+        <item>Anchorage</item>
+        <item>Cordova</item>
+        <item>Fairbanks</item>
+        <item>Haines</item>
+        <item>Homer</item>
+        <item>Juneau</item>
+        <item>Ketchikan</item>
+        <item>Kodiak</item>
+        <item>Kotzebue</item>
+        <item>Nome</item>
+        <item>Palmer</item>
+        <item>Seward</item>
+        <item>Sitka</item>
+        <item>Skagway</item>
+        <item>Valdez</item>
+    </string-array>
+    <string-array name="california_cities_list">
+        <item>Alameda</item>
+        <item>Alhambra</item>
+        <item>Anaheim</item>
+        <item>Antioch</item>
+        <item>Arcadia</item>
+        <item>Bakersfield</item>
+        <item>Barstow</item>
+        <item>Belmont</item>
+        <item>Berkeley</item>
+        <item>Beverly Hills</item>
+        <item>Brea</item>
+        <item>Buena Park</item>
+        <item>Burbank</item>
+        <item>Calexico</item>
+        <item>Calistoga</item>
+        <item>Carlsbad</item>
+        <item>Carmel</item>
+        <item>Chico</item>
+        <item>Chula Vista</item>
+        <item>Claremont</item>
+        <item>Compton</item>
+        <item>Concord</item>
+        <item>Corona</item>
+        <item>Coronado</item>
+        <item>Costa Mesa</item>
+        <item>Culver City</item>
+        <item>Daly City</item>
+        <item>Davis</item>
+        <item>Downey</item>
+        <item>El Centro</item>
+        <item>El Cerrito</item>
+        <item>El Monte</item>
+        <item>Escondido</item>
+        <item>Eureka</item>
+        <item>Fairfield</item>
+        <item>Fontana</item>
+        <item>Fremont</item>
+        <item>Fresno</item>
+        <item>Fullerton</item>
+        <item>Garden Grove</item>
+        <item>Glendale</item>
+        <item>Hayward</item>
+        <item>Hollywood</item>
+        <item>Huntington Beach</item>
+        <item>Indio</item>
+        <item>Inglewood</item>
+        <item>Irvine</item>
+        <item>La Habra</item>
+        <item>Laguna Beach</item>
+        <item>Lancaster</item>
+        <item>Livermore</item>
+        <item>Lodi</item>
+        <item>Lompoc</item>
+        <item>Long Beach</item>
+        <item>Los Angeles</item>
+        <item>Malibu</item>
+        <item>Martinez</item>
+        <item>Marysville</item>
+        <item>Menlo Park</item>
+        <item>Merced</item>
+        <item>Modesto</item>
+        <item>Monterey</item>
+        <item>Mountain View</item>
+        <item>Napa</item>
+        <item>Needles</item>
+        <item>Newport Beach</item>
+        <item>Norwalk</item>
+        <item>Novato</item>
+        <item>Oakland</item>
+        <item>Oceanside</item>
+        <item>Ojai</item>
+        <item>Ontario</item>
+        <item>Orange</item>
+        <item>Oroville</item>
+        <item>Oxnard</item>
+        <item>Pacific Grove</item>
+        <item>Palm Springs</item>
+        <item>Palmdale</item>
+        <item>Palo Alto</item>
+        <item>Pasadena</item>
+        <item>Petaluma</item>
+        <item>Pomona</item>
+        <item>Port Hueneme</item>
+        <item>Rancho Cucamonga</item>
+        <item>Red Bluff</item>
+        <item>Redding</item>
+        <item>Redlands</item>
+        <item>Redondo Beach</item>
+        <item>Redwood City</item>
+        <item>Richmond</item>
+        <item>Riverside</item>
+        <item>Roseville</item>
+        <item>Sacramento</item>
+        <item>Salinas</item>
+        <item>San Bernardino</item>
+        <item>San Clemente</item>
+        <item>San Diego</item>
+        <item>San Fernando</item>
+        <item>San Francisco</item>
+        <item>San Gabriel</item>
+        <item>San Jose</item>
+        <item>San Juan Capistrano</item>
+        <item>San Leandro</item>
+        <item>San Luis Obispo</item>
+        <item>San Marino</item>
+        <item>San Mateo</item>
+        <item>San Pedro</item>
+        <item>San Rafael</item>
+        <item>San Simeon</item>
+        <item>Santa Ana</item>
+        <item>Santa Barbara</item>
+        <item>Santa Clara</item>
+        <item>Santa Clarita</item>
+        <item>Santa Cruz</item>
+        <item>Santa Monica</item>
+        <item>Santa Rosa</item>
+        <item>Sausalito</item>
+        <item>Simi Valley</item>
+        <item>Sonoma</item>
+        <item>South San Francisco</item>
+        <item>Stockton</item>
+        <item>Sunnyvale</item>
+        <item>Susanville</item>
+        <item>Thousand Oaks</item>
+        <item>Torrance</item>
+        <item>Turlock</item>
+        <item>Ukiah</item>
+        <item>Vallejo</item>
+        <item>Ventura</item>
+        <item>Victorville</item>
+        <item>Visalia</item>
+        <item>Walnut Creek</item>
+        <item>Watts</item>
+        <item>West Covina</item>
+        <item>Whittier</item>
+        <item>Woodland</item>
+        <item>Yorba Linda</item>
+        <item>Yuba City</item>
+    </string-array>
+
+    <string-array name="massachusetts_cities_list">
+        <item>Abington</item>
+        <item>Adams</item>
+        <item>Amesbury</item>
+        <item>Amherst</item>
+        <item>Andover</item>
+        <item>Arlington</item>
+        <item>Athol</item>
+        <item>Attleboro</item>
+        <item>Barnstable</item>
+        <item>Bedford</item>
+        <item>Beverly</item>
+        <item>Boston</item>
+        <item>Bourne</item>
+        <item>Braintree</item>
+        <item>Brockton</item>
+        <item>Brookline</item>
+        <item>Cambridge</item>
+        <item>Canton</item>
+        <item>Charlestown</item>
+        <item>Chelmsford</item>
+        <item>Chelsea</item>
+        <item>Chicopee</item>
+        <item>Clinton</item>
+        <item>Cohasset</item>
+        <item>Concord</item>
+        <item>Danvers</item>
+        <item>Dartmouth</item>
+        <item>Dedham</item>
+        <item>Dennis</item>
+        <item>Duxbury</item>
+        <item>Eastham</item>
+        <item>Edgartown</item>
+        <item>Everett</item>
+        <item>Fairhaven</item>
+        <item>Fall River</item>
+        <item>Falmouth</item>
+        <item>Fitchburg</item>
+        <item>Framingham</item>
+        <item>Gloucester</item>
+        <item>Great Barrington</item>
+        <item>Greenfield</item>
+        <item>Groton</item>
+        <item>Harwich</item>
+        <item>Haverhill</item>
+        <item>Hingham</item>
+        <item>Holyoke</item>
+        <item>Hyannis</item>
+        <item>Ipswich</item>
+        <item>Lawrence</item>
+        <item>Lenox</item>
+        <item>Leominster</item>
+        <item>Lexington</item>
+        <item>Lowell</item>
+        <item>Ludlow</item>
+        <item>Lynn</item>
+        <item>Malden</item>
+        <item>Marblehead</item>
+        <item>Marlborough</item>
+        <item>Medford</item>
+        <item>Milton</item>
+        <item>Nahant</item>
+        <item>Natick</item>
+        <item>New Bedford</item>
+        <item>Newburyport</item>
+        <item>Newton</item>
+        <item>North Adams</item>
+        <item>Northampton</item>
+        <item>Norton</item>
+        <item>Norwood</item>
+        <item>Peabody</item>
+        <item>Pittsfield</item>
+        <item>Plymouth</item>
+        <item>Provincetown</item>
+        <item>Quincy</item>
+        <item>Randolph</item>
+        <item>Revere</item>
+        <item>Salem</item>
+        <item>Sandwich</item>
+        <item>Saugus</item>
+        <item>Somerville</item>
+        <item>South Hadley</item>
+        <item>Springfield</item>
+        <item>Stockbridge</item>
+        <item>Stoughton</item>
+        <item>Sturbridge</item>
+        <item>Sudbury</item>
+        <item>Taunton</item>
+        <item>Tewksbury</item>
+        <item>Truro</item>
+        <item>Watertown</item>
+        <item>Webster</item>
+        <item>Wellesley</item>
+        <item>Wellfleet</item>
+        <item>West Bridgewater</item>
+        <item>West Springfield</item>
+        <item>Westfield</item>
+        <item>Weymouth</item>
+        <item>Whitman</item>
+        <item>Williamstown</item>
+        <item>Woburn</item>
+        <item>Woods Hole</item>
+        <item>Worcester</item>
+    </string-array>
+
+    <string-array name="new_york_cities_list">
+        <item>Albany</item>
+        <item>Amsterdam</item>
+        <item>Auburn</item>
+        <item>Babylon</item>
+        <item>Batavia</item>
+        <item>Beacon</item>
+        <item>Bedford</item>
+        <item>Binghamton</item>
+        <item>Bronx</item>
+        <item>Brooklyn</item>
+        <item>Buffalo</item>
+        <item>Chautauqua</item>
+        <item>Cheektowaga</item>
+        <item>Clinton</item>
+        <item>Cohoes</item>
+        <item>Coney Island</item>
+        <item>Cooperstown</item>
+        <item>Corning</item>
+        <item>Cortland</item>
+        <item>Crown Point</item>
+        <item>Dunkirk</item>
+        <item>East Aurora</item>
+        <item>East Hampton</item>
+        <item>Eastchester</item>
+        <item>Elmira</item>
+        <item>Flushing</item>
+        <item>Forest Hills</item>
+        <item>Fredonia</item>
+        <item>Garden City</item>
+        <item>Geneva</item>
+        <item>Glens Falls</item>
+        <item>Gloversville</item>
+        <item>Great Neck</item>
+        <item>Hammondsport</item>
+        <item>Harlem</item>
+        <item>Hempstead</item>
+        <item>Herkimer</item>
+        <item>Hudson</item>
+        <item>Huntington</item>
+        <item>Hyde Park</item>
+        <item>Ilion</item>
+        <item>Ithaca</item>
+        <item>Jamestown</item>
+        <item>Johnstown</item>
+        <item>Kingston</item>
+        <item>Lackawanna</item>
+        <item>Lake Placid</item>
+        <item>Levittown</item>
+        <item>Lockport</item>
+        <item>Mamaroneck</item>
+        <item>Manhattan</item>
+        <item>Massena</item>
+        <item>Middletown</item>
+        <item>Mineola</item>
+        <item>Mount Vernon</item>
+        <item>New Paltz</item>
+        <item>New Rochelle</item>
+        <item>New Windsor</item>
+        <item>New York City</item>
+        <item>Newburgh</item>
+        <item>Niagara Falls</item>
+        <item>North Hempstead</item>
+        <item>Nyack</item>
+        <item>Ogdensburg</item>
+        <item>Olean</item>
+        <item>Oneida</item>
+        <item>Oneonta</item>
+        <item>Ossining</item>
+        <item>Oswego</item>
+        <item>Oyster Bay</item>
+        <item>Palmyra</item>
+        <item>Peekskill</item>
+        <item>Plattsburgh</item>
+        <item>Port Washington</item>
+        <item>Potsdam</item>
+        <item>Poughkeepsie</item>
+        <item>Queens</item>
+        <item>Rensselaer</item>
+        <item>Rochester</item>
+        <item>Rome</item>
+        <item>Rotterdam</item>
+        <item>Rye</item>
+        <item>Sag Harbor</item>
+        <item>Saranac Lake</item>
+        <item>Saratoga Springs</item>
+        <item>Scarsdale</item>
+        <item>Schenectady</item>
+        <item>Seneca Falls</item>
+        <item>Southampton</item>
+        <item>Staten Island</item>
+        <item>Stony Brook</item>
+        <item>Stony Point</item>
+        <item>Syracuse</item>
+        <item>Tarrytown</item>
+        <item>Ticonderoga</item>
+        <item>Tonawanda</item>
+        <item>Troy</item>
+        <item>Utica</item>
+        <item>Watertown</item>
+        <item>Watervliet</item>
+        <item>Watkins Glen</item>
+        <item>West Seneca</item>
+        <item>White Plains</item>
+        <item>Woodstock</item>
+        <item>Yonkers</item>
+    </string-array>
+
+    <string-array name="washington_cities_list">
+        <item>Aberdeen</item>
+        <item>Anacortes</item>
+        <item>Auburn</item>
+        <item>Bellevue</item>
+        <item>Bellingham</item>
+        <item>Bremerton</item>
+        <item>Centralia</item>
+        <item>Coulee Dam</item>
+        <item>Coupeville</item>
+        <item>Ellensburg</item>
+        <item>Ephrata</item>
+        <item>Everett</item>
+        <item>Hoquiam</item>
+        <item>Kelso</item>
+        <item>Kennewick</item>
+        <item>Longview</item>
+        <item>Moses Lake</item>
+        <item>Oak Harbor</item>
+        <item>Olympia</item>
+        <item>Pasco</item>
+        <item>Point Roberts</item>
+        <item>Port Angeles</item>
+        <item>Pullman</item>
+        <item>Puyallup</item>
+        <item>Redmond</item>
+        <item>Renton</item>
+        <item>Richland</item>
+        <item>Seattle</item>
+        <item>Spokane</item>
+        <item>Tacoma</item>
+        <item>Vancouver</item>
+        <item>Walla Walla</item>
+        <item>Wenatchee</item>
+        <item>Yakima</item>
+    </string-array>
 </resources>
