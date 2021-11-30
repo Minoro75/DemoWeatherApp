@@ -50,24 +50,26 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             citiesList.addAll(resources.getStringArray(R.array.washington_cities_list))
         }
 
-        binding.actvCityName.setAdapter(autoCompleteAdapter)
-        binding.actvCityName.threshold = 2
-        binding.actvCityName.setOnDismissListener {
-            hideKeyboard(view)
-        }
-        binding.ibGetCurrentLocation.setOnClickListener {
-            getDeviceLocation()
-        }
-        binding.btGoToDetails.setOnClickListener {
-            findNavController().navigate(
-                CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
-                    viewModel.city.value
+        with(binding) {
+            actvCityName.setAdapter(autoCompleteAdapter)
+            actvCityName.threshold = 2
+            actvCityName.setOnDismissListener {
+                hideKeyboard(view)
+            }
+            ibGetCurrentLocation.setOnClickListener {
+                getDeviceLocation()
+            }
+            btGoToDetails.setOnClickListener {
+                findNavController().navigate(
+                    CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
+                        viewModel.city.value
+                    )
                 )
-            )
+            }
+            viewModel.city.observe(viewLifecycleOwner, {
+                actvCityName.setText(viewModel.city.value)
+            })
         }
-        viewModel.city.observe(viewLifecycleOwner, {
-            binding.actvCityName.setText(viewModel.city.value)
-        })
     }
 
     private fun hideKeyboard(view: View) {
