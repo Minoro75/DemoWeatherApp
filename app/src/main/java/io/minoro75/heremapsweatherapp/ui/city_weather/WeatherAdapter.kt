@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import io.minoro75.heremapsweatherapp.R
 import io.minoro75.heremapsweatherapp.domain.forecast_entity.Weather
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class WeatherAdapter(private val weatherList: ArrayList<Weather>) :
     RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
@@ -24,12 +26,15 @@ class WeatherAdapter(private val weatherList: ArrayList<Weather>) :
 
     class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(weatherItem: Weather) {
-            itemView.findViewById<TextView>(R.id.tvTemperature).text = weatherItem.temperature
+            val responseUtcFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
+            val date = responseUtcFormat.parse(weatherItem.utcTime)
+            val dateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.getDefault())
+            itemView.findViewById<TextView>(R.id.tvTemperature).text =
+                itemView.context.getString(R.string.temperature_item, weatherItem.temperature)
             itemView.findViewById<TextView>(R.id.tvDescription).text = weatherItem.description
-            itemView.findViewById<TextView>(R.id.tvDate).text = weatherItem.utcTime
+            itemView.findViewById<TextView>(R.id.tvDate).text = dateFormat.format(date)
             Glide.with(itemView)
                 .load(weatherItem.iconLink)
-                .centerCrop()
                 .into(itemView.findViewById(R.id.ivIcon))
         }
     }

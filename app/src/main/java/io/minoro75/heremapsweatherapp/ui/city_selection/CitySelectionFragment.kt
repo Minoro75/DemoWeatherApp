@@ -64,7 +64,6 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                 hideKeyboard(view)
             }
             ibGetCurrentLocation.setOnClickListener {
-                binding.btGoToDetails.toVisible()
                 getDeviceLocation()
             }
             btGoToDetails.setOnClickListener {
@@ -76,6 +75,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             }
             viewModel.city.observe(viewLifecycleOwner, {
                 actvCityName.setText(viewModel.city.value)
+                selectedCity = viewModel.city.value
             })
         }
     }
@@ -102,6 +102,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         ) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
                 viewModel.getCityNameFromCoordinates(it.latitude, it.longitude)
+                binding.btGoToDetails.toVisible()
             }
         } else {
             requestPermissions()
