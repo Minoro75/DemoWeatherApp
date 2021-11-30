@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surface"
     tools:context=".ui.city_selection.CitySelectionFragment">
 
     <AutoCompleteTextView
@@ -13,16 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="32dp"
+        android:hint="@string/enter_city_hint"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/ibGetCurrentLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/shape_rounded_corners_button_with_color"
         android:src="@android:drawable/ic_menu_mylocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/actvCityName"
