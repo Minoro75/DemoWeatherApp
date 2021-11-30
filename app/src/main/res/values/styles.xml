@@ -6,4 +6,7 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeBottomRight">20%</item>
     </style>
+    <style name="RoundedGradientButton" parent="Widget.AppCompat.Button">
+        <item name="background">@drawable/shape_rounded_gradient</item>
+    </style>
 </resources>
