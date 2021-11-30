@@ -5,12 +5,13 @@
       <map>
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/drawable/shape_rounded_bottom_corners.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/drawable/shape_rounded_corners.xml" value="0.21875" />
+        <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/drawable/shape_rounded_corners_button_with_color.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/drawable/shape_rounded_corners_enter_field.xml" value="0.21875" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/drawable/shape_rounded_gradient.xml" value="0.21875" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/city_selection_fragment.xml" value="0.28940217391304346" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/city_weather_fragment.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/fragment_city_selection.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/fragment_city_selection.xml" value="0.25" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/fragment_city_weather.xml" value="0.2694746376811594" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/item_weather.xml" value="0.5" />
         <entry key="..\:/Users/minoro75/AndroidStudioProjects/HereMapsWeatherApp/app/src/main/res/layout/main_fragment.xml" value="0.18854166666666666" />
