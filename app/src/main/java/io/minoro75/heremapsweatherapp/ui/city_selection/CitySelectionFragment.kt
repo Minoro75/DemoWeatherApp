@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -18,6 +19,7 @@ import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.heremapsweatherapp.R
 import io.minoro75.heremapsweatherapp.databinding.FragmentCitySelectionBinding
+import io.minoro75.heremapsweatherapp.utils.toVisible
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -31,6 +33,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
     private val fusedLocationProviderClient: FusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this.requireContext())
     }
+    private var selectedCity: String? = null
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
 
@@ -53,18 +56,23 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         with(binding) {
             actvCityName.setAdapter(autoCompleteAdapter)
             actvCityName.threshold = 2
+            actvCityName.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
+                selectedCity = parent.getItemAtPosition(position).toString()
+                btGoToDetails.toVisible()
+            }
             actvCityName.setOnDismissListener {
                 hideKeyboard(view)
             }
             ibGetCurrentLocation.setOnClickListener {
+                binding.btGoToDetails.toVisible()
                 getDeviceLocation()
             }
             btGoToDetails.setOnClickListener {
-                findNavController().navigate(
-                    CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
-                        viewModel.city.value
+                if (!selectedCity.isNullOrEmpty()) {
+                    findNavController().navigate(
+                        CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(selectedCity)
                     )
-                )
+                }
             }
             viewModel.city.observe(viewLifecycleOwner, {
                 actvCityName.setText(viewModel.city.value)
