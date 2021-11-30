@@ -40,4 +40,9 @@ class WeatherAdapter(private val weatherList: ArrayList<Weather>) :
         }
         notifyDataSetChanged()
     }
+
+    fun clear() {
+        weatherList.clear()
+        notifyDataSetChanged()
+    }
 }

@@ -30,11 +30,19 @@ class CityWeatherFragment : Fragment(R.layout.fragment_city_weather) {
         val weatherAdapter = WeatherAdapter(arrayListOf())
         binding.rvWeatherList.adapter = weatherAdapter
 
+        binding.srlSwipeContainer.setOnRefreshListener {
+            weatherAdapter.clear()
+            viewModel.getWeatherInCity(args.city)
+        }
+        binding.srlSwipeContainer.setColorSchemeResources(R.color.primaryDarkColor)
+
         lifecycleScope.launch {
             viewModel.getWeatherInCity(args.city)
             viewModel.weather.observe(viewLifecycleOwner, {
                 when (it.status) {
                     is Status.SUCCESS -> {
+                        binding.srlSwipeContainer.isRefreshing = false
+                        weatherAdapter.clear()
                         weatherAdapter.addList(it.data)
                         binding.tvCurrentWeatherTemp.text = it.data?.first()?.temperature
                         binding.tvCurrentDate.text = it.data?.first()?.utcTime
