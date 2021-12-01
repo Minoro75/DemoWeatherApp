@@ -35,11 +35,12 @@
         android:background="@drawable/shape_rounded_gradient"
         android:elevation="8dp"
         android:src="@android:drawable/ic_menu_mylocation"
+        android:tint="@color/design_default_color_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/actvCityName"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btGoToDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
