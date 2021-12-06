@@ -1,6 +1,6 @@
 package io.minoro75.demoweatherapp.repository
 
-import io.minoro75.demoweatherapp.domain.forecast_entity.ForecastLocation
+import io.minoro75.demoweatherapp.forecast_entity.ForecastLocation
 import io.minoro75.demoweatherapp.remote.RemoteDataSourceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
