@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.minoro75.demoweatherapp.BuildConfig
-import io.minoro75.demoweatherapp.remote.RemoteDataSourceImpl
-import io.minoro75.demoweatherapp.remote.RemoteService
+import io.minoro75.demoweatherapp.data.remote.RemoteDataSourceImpl
+import io.minoro75.demoweatherapp.data.remote.RemoteService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

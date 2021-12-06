@@ -1,8 +1,8 @@
-package io.minoro75.demoweatherapp.remote
+package io.minoro75.demoweatherapp.data.remote
 
 import io.minoro75.demoweatherapp.BuildConfig
-import io.minoro75.demoweatherapp.city_name_entity.CityNameRoot
-import io.minoro75.demoweatherapp.forecast_entity.ForecastRoot
+import io.minoro75.demoweatherapp.domain.city_name.model.CityNameRoot
+import io.minoro75.demoweatherapp.domain.forecasts.model.ForecastRoot
 import retrofit2.http.GET
 import retrofit2.http.Query
 

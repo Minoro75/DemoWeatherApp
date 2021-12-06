@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.city_name_entity
+package io.minoro75.demoweatherapp.domain.city_name.model
 
 import com.squareup.moshi.JsonClass
 
