@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_city_selection"
-        android:name="io.minoro75.heremapsweatherapp.ui.city_selection.CitySelectionFragment"
+        android:name="io.minoro75.demoweatherapp.ui.city_selection.CitySelectionFragment"
         android:label="City Selection"
         tools:layout="@layout/fragment_city_selection">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/nav_city_weather"
-        android:name="io.minoro75.heremapsweatherapp.ui.city_weather.CityWeatherFragment"
+        android:name="io.minoro75.demoweatherapp.ui.city_weather.CityWeatherFragment"
         android:label="City Weather"
         tools:layout="@layout/fragment_city_weather" >
         <argument
