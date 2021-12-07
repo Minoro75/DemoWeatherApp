@@ -12,6 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -23,6 +26,7 @@ import io.minoro75.demoweatherapp.utils.toVisible
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -73,10 +77,14 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                     )
                 }
             }
-            viewModel.city.observe(viewLifecycleOwner, {
-                actvCityName.setText(viewModel.city.value)
-                selectedCity = viewModel.city.value
-            })
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.city.collect {
+                        actvCityName.setText(it)
+                        selectedCity = it
+                    }
+                }
+            }
         }
     }
 
