@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.utils
+package io.minoro75.demoweatherapp.domain.common
 
 sealed class Status {
     object SUCCESS : Status()

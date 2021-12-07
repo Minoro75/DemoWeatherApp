@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.minoro75.demoweatherapp.domain.common.Resource
 import io.minoro75.demoweatherapp.domain.forecasts.model.Weather
 import io.minoro75.demoweatherapp.domain.forecasts.usecase.GetForecastsUseCase
-import io.minoro75.demoweatherapp.utils.Resource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject

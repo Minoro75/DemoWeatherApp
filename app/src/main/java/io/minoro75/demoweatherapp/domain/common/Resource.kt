@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.utils
+package io.minoro75.demoweatherapp.domain.common
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {

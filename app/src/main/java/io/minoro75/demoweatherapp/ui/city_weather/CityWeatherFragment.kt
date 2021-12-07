@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.demoweatherapp.R
 import io.minoro75.demoweatherapp.databinding.FragmentCityWeatherBinding
-import io.minoro75.demoweatherapp.utils.Status
+import io.minoro75.demoweatherapp.domain.common.Status
 import io.minoro75.demoweatherapp.utils.toInvisible
 import io.minoro75.demoweatherapp.utils.toVisible
 import kotlinx.coroutines.launch
