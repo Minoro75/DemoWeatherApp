@@ -14,11 +14,6 @@ import javax.inject.Inject
 class CitySelectionViewModel @Inject constructor(
     private val getCityNameUseCase: GetCityNameUseCase
 ) : ViewModel() {
-    private val _lat = MutableLiveData<Double>()
-    val lat: LiveData<Double> = _lat
-
-    private val _lon = MutableLiveData<Double>()
-    val lon: LiveData<Double> = _lon
 
     private val _city = MutableLiveData<String>()
     val city: LiveData<String> = _city
