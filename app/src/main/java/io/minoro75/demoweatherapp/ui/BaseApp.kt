@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.utils
+package io.minoro75.demoweatherapp.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
