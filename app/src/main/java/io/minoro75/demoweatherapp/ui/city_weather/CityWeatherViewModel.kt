@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.minoro75.demoweatherapp.data.repository.WeatherRepository
 import io.minoro75.demoweatherapp.domain.forecasts.model.Weather
+import io.minoro75.demoweatherapp.domain.forecasts.usecase.GetForecastsUseCase
 import io.minoro75.demoweatherapp.utils.Resource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CityWeatherViewModel @Inject constructor(
-    private val weatherRepository: WeatherRepository
+    private val getForecastsUseCase: GetForecastsUseCase
 ) : ViewModel() {
     private val _weather = MutableLiveData<Resource<List<Weather>>>()
     val weather: LiveData<Resource<List<Weather>>> = _weather
@@ -26,7 +26,7 @@ class CityWeatherViewModel @Inject constructor(
         viewModelScope.launch {
             _weather.value = Resource.loading(null)
             try {
-                weatherRepository.getWeatherInCity(city).collect {
+                getForecastsUseCase(city).collect {
                     _weather.value = Resource.success(it.forecast)
                     _city.value = it.city
                 }
