@@ -12,9 +12,9 @@ class WeatherRepository @Inject constructor(
 ) {
     suspend fun getWeatherInCity(city: String): Flow<ForecastLocation> =
         remoteDataSourceImpl.getWeatherInCity(city)
-            .flowOn(Dispatchers.Default)
+            .flowOn(Dispatchers.IO)
 
     suspend fun getCityNameFromCoordinates(lat: Double, lon: Double): Flow<String> =
         remoteDataSourceImpl.getCityNameFromCoordinates(lat, lon)
-            .flowOn(Dispatchers.Default)
+            .flowOn(Dispatchers.IO)
 }
