@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.minoro75.demoweatherapp.data.repository.WeatherRepository
+import io.minoro75.demoweatherapp.domain.city_name.usecase.GetCityNameUseCase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CitySelectionViewModel @Inject constructor(
-    private val weatherRepository: WeatherRepository
+    private val getCityNameUseCase: GetCityNameUseCase
 ) : ViewModel() {
     private val _lat = MutableLiveData<Double>()
     val lat: LiveData<Double> = _lat
@@ -25,7 +25,7 @@ class CitySelectionViewModel @Inject constructor(
 
     fun getCityNameFromCoordinates(lat: Double, lon: Double) {
         viewModelScope.launch {
-            weatherRepository.getCityNameFromCoordinates(lat, lon).collect {
+            getCityNameUseCase(lat, lon).collect {
                 _city.value = it
             }
         }
