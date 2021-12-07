@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.ui.city_weather
+package io.minoro75.demoweatherapp.ui.city_forecast
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CityWeatherViewModel @Inject constructor(
+class CityForecastViewModel @Inject constructor(
     private val getForecastsUseCase: GetForecastsUseCase
 ) : ViewModel() {
     private val _weather = MutableLiveData<Resource<List<Weather>>>()

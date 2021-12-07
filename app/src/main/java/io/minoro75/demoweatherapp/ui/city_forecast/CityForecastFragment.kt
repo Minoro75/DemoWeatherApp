@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.ui.city_weather
+package io.minoro75.demoweatherapp.ui.city_forecast
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.demoweatherapp.R
-import io.minoro75.demoweatherapp.databinding.FragmentCityWeatherBinding
+import io.minoro75.demoweatherapp.databinding.FragmentCityForecastBinding
 import io.minoro75.demoweatherapp.domain.common.Status
 import io.minoro75.demoweatherapp.utils.toInvisible
 import io.minoro75.demoweatherapp.utils.toVisible
@@ -22,15 +22,15 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 @AndroidEntryPoint
-class CityWeatherFragment : Fragment(R.layout.fragment_city_weather) {
+class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
 
-    private val binding: FragmentCityWeatherBinding by viewBinding()
-    private val args: CityWeatherFragmentArgs by navArgs()
-    private val viewModel: CityWeatherViewModel by viewModels()
+    private val binding: FragmentCityForecastBinding by viewBinding()
+    private val args: CityForecastFragmentArgs by navArgs()
+    private val viewModel: CityForecastViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val weatherAdapter = WeatherAdapter(arrayListOf())
+        val weatherAdapter = ForecastAdapter(arrayListOf())
         with(binding) {
             rvWeatherList.layoutManager = LinearLayoutManager(context)
             rvWeatherList.adapter = weatherAdapter

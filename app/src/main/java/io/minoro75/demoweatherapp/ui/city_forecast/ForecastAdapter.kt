@@ -1,4 +1,4 @@
-package io.minoro75.demoweatherapp.ui.city_weather
+package io.minoro75.demoweatherapp.ui.city_forecast
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,20 +11,20 @@ import io.minoro75.demoweatherapp.domain.forecasts.model.Weather
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class WeatherAdapter(private val weatherList: ArrayList<Weather>) :
-    RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+class ForecastAdapter(private val weatherList: ArrayList<Weather>) :
+    RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder =
-        WeatherViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder =
+        ForecastViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_forecast, parent, false))
 
-    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
         holder.bind(weatherList[position])
     }
 
     override fun getItemCount(): Int =
         weatherList.size
 
-    class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ForecastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(weatherItem: Weather) {
             val responseUtcFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
             val date = responseUtcFormat.parse(weatherItem.utcTime)
