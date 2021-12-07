@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "HereMaps Weather App"
 include ':app'
+include ':domain'
+include ':data'
