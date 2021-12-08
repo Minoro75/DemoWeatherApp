@@ -25,9 +25,9 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField 'String', 'API_KEY', "$API_WEATHER_KEY_VALUE"
-            buildConfigField 'String', 'API_SERVER', "$API_SERVER_VALUE"
-            buildConfigField 'String', 'API_CALL', "$API_WEATHER_VALUE"
+            buildConfigField 'String', 'API_KEY_OPENWEATHER', "$API_KEY_OPENWEATHER"
+            buildConfigField 'String', 'BASE_URL_OPENWEATHER', "$BASE_URL_OPENWEATHER"
+            buildConfigField 'String', 'API_KEY_HEREMAPS', "$API_KEY_HEREMAPS"
 
         }
         release {
