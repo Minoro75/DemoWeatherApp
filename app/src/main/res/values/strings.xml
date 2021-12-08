@@ -2,7 +2,7 @@
     <string name="app_name">HereMaps Weather App</string>
     <string name="enter_city_hint">Your City</string>
     <string name="back">Back</string>
-    <string name="temperature_item">%f°/%f°</string>
+    <string name="temperature_item">%d°/%d°</string>
     <string name="weather_icon_link">"https://openweathermap.org/img/wn/%s@2x.png"</string>
     <string-array name="alabama_cities_list">
         <item>Alexander City</item>

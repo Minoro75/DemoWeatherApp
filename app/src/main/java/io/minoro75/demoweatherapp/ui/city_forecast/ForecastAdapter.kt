@@ -30,8 +30,8 @@ class ForecastAdapter(private val weatherList: ArrayList<Forecast>) :
             itemView.findViewById<TextView>(R.id.tvTemperature).text =
                 itemView.context.getString(
                     R.string.temperature_item,
-                    forecast.temperature?.min,
-                    forecast.temperature?.max
+                    forecast.temperature?.min?.toInt(),
+                    forecast.temperature?.max?.toInt()
                 )
             itemView.findViewById<TextView>(R.id.tvDescription).text = forecast.iconList.first().iconDescription
             itemView.findViewById<TextView>(R.id.tvDate).text = forecast.currentTime.toString()
