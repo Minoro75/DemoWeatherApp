@@ -75,8 +75,8 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                     findNavController().navigate(
                         CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
                             selectedCity,
-                            viewModel.latitude.value,
-                            viewModel.longitude.value
+                            viewModel.latitude.value.toFloat(),
+                            viewModel.longitude.value.toFloat()
                         )
                     )
                 }

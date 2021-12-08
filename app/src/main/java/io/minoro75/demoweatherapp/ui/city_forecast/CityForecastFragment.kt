@@ -16,13 +16,13 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.demoweatherapp.R
 import io.minoro75.demoweatherapp.databinding.FragmentCityForecastBinding
+import io.minoro75.demoweatherapp.domain.common.Resource
 import io.minoro75.demoweatherapp.domain.common.Status
+import io.minoro75.demoweatherapp.domain.forecast.model.Forecast
 import io.minoro75.demoweatherapp.utils.toInvisible
 import io.minoro75.demoweatherapp.utils.toVisible
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @AndroidEntryPoint
 class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
@@ -39,13 +39,13 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
             rvWeatherList.adapter = weatherAdapter
             srlSwipeContainer.setOnRefreshListener {
                 weatherAdapter.clear()
-                viewModel.getWeatherInCity(args.city)
+                viewModel.getWeatherInCity(args.lat.toDouble(), args.lon.toDouble())
             }
             srlSwipeContainer.setColorSchemeResources(R.color.primaryDarkColor)
             btBack.setOnClickListener { findNavController().navigateUp() }
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.getWeatherInCity(args.city)
+                    viewModel.getWeatherInCity(args.lat.toDouble(), args.lon.toDouble())
                     viewModel.weather.collect { resourceList ->
                         when (resourceList.status) {
                             is Status.SUCCESS -> {
@@ -54,20 +54,14 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
                                 rvWeatherList.toVisible()
                                 clCurrentWeather.toVisible()
                                 // TODO: 12/7/2021 simplify this block and cleanup  this mess
-                                val responseUtcFormat =
+                                /*val responseUtcFormat =
                                     SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
                                 val date = responseUtcFormat.parse(resourceList.data?.first()?.utcTime)
-                                val simpleDateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.getDefault())
+                                val simpleDateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.getDefault())*/
                                 srlSwipeContainer.isRefreshing = false
                                 weatherAdapter.clear()
                                 weatherAdapter.addList(resourceList.data)
-                                tvCurrentWeatherTemp.text =
-                                    getString(R.string.temperature_item, resourceList.data?.first()?.temperature)
-                                tvCurrentDate.text = simpleDateFormat.format(date)
-                                tvCurrentWeatherDescription.text = resourceList.data?.first()?.description
-                                Glide.with(requireContext())
-                                    .load(resourceList.data?.first()?.iconLink)
-                                    .into(ivCurrentWeatherIcon)
+                                setCurrentWeather(resourceList)
                             }
                             is Status.LOADING -> {
                                 piCityWeather.toVisible()
@@ -90,5 +84,19 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
                 }
             }
         }
+    }
+
+    private fun FragmentCityForecastBinding.setCurrentWeather(resourceList: Resource<List<Forecast>>) {
+        tvCurrentWeatherTemp.text =
+            getString(
+                R.string.temperature_item, resourceList.data?.first()?.temperature?.min,
+                resourceList.data?.first()?.temperature?.max
+            )
+        tvCurrentDate.text = resourceList.data?.first()?.currentTime.toString()
+        tvCurrentWeatherDescription.text =
+            resourceList.data?.first()?.iconList?.first()?.iconDescription
+        Glide.with(requireContext())
+            .load("https://openweathermap.org/img/wn/${resourceList.data?.first()?.iconList?.first()?.iconLink}@2x.png")
+            .into(ivCurrentWeatherIcon)
     }
 }
