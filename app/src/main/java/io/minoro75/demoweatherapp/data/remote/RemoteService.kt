@@ -7,9 +7,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RemoteService {
-    @GET("/weather/1.0/report.json?product=forecast_7days&apiKey=${BuildConfig.API_KEY}")
-    suspend fun getWeatherInCity(
-        @Query(value = "name") city: String
+    @GET("/data/2.5/onecall?units=metric&exclude=current,minutely,hourly,alert&appid=${BuildConfig.API_KEY_OPENWEATHER}")
+    suspend fun getForecastFromCoordinates(
+        @Query(value = "lat") lat: Double,
+        @Query(value = "lon") lon: Double
     ): ForecastRoot
 
     @GET("/weather/1.0/report.json?product=observation&apiKey=${BuildConfig.API_KEY}&oneobservation=true")

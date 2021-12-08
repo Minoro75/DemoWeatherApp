@@ -20,7 +20,7 @@ import javax.inject.Singleton
 object RemoteModule {
     @Provides
     fun provideBaseUrl() =
-        BuildConfig.API_SERVER
+        BuildConfig.BASE_URL_OPENWEATHER
 
     @Provides
     fun provideMoshi(): Moshi =
