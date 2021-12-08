@@ -1,5 +1,6 @@
 package io.minoro75.demoweatherapp.data.remote
 
+import io.minoro75.demoweatherapp.domain.cities_suggestions.model.SuggestionsResponse
 import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -12,6 +13,12 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getForecastFromCoordinates(lat: Double, lon: Double): Flow<ForecastResponse> {
         return flow {
             emit(remoteService.getForecastFromCoordinates(lat, lon))
+        }
+    }
+
+    override suspend fun getCitiesSuggestions(enteredRequest: String): Flow<SuggestionsResponse> {
+        return flow {
+            emit(remoteService.getCitySuggestions(enteredRequest))
         }
     }
 }
