@@ -1,6 +1,6 @@
 package io.minoro75.demoweatherapp.data.remote
 
-import io.minoro75.demoweatherapp.domain.forecasts.model.ForecastLocation
+import io.minoro75.demoweatherapp.domain.forecast.model.ForecastLocation
 import kotlinx.coroutines.flow.Flow
 
 interface RemoteDataSource {

@@ -1,6 +1,6 @@
 package io.minoro75.demoweatherapp.data.remote
 
-import io.minoro75.demoweatherapp.domain.forecasts.model.ForecastLocation
+import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -8,7 +8,7 @@ import javax.inject.Inject
 class RemoteDataSourceImpl @Inject constructor(
     private val remoteService: RemoteService
 ) : RemoteDataSource {
-    override suspend fun getWeatherInCity(city: String): Flow<ForecastLocation> {
+    override suspend fun getWeatherInCity(city: String): Flow<ForecastResponse> {
         return flow {
             emit(remoteService.getWeatherInCity(city).forecasts.forecastLocation)
         }

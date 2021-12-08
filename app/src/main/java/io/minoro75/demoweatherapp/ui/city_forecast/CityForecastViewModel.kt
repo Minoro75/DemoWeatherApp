@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.minoro75.demoweatherapp.domain.common.Resource
-import io.minoro75.demoweatherapp.domain.forecasts.model.Weather
-import io.minoro75.demoweatherapp.domain.forecasts.usecase.GetForecastsUseCase
+import io.minoro75.demoweatherapp.domain.forecast.model.Weather
+import io.minoro75.demoweatherapp.domain.forecast.usecase.GetForecastsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
