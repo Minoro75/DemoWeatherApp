@@ -73,7 +73,11 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             btGoToDetails.setOnClickListener {
                 if (!selectedCity.isNullOrEmpty()) {
                     findNavController().navigate(
-                        CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(selectedCity)
+                        CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
+                            selectedCity,
+                            viewModel.latitude.value.toFloat(),
+                            viewModel.longitude.value.toFloat()
+                        )
                     )
                 }
             }
@@ -109,7 +113,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             PackageManager.PERMISSION_GRANTED
         ) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-                viewModel.getCityNameFromCoordinates(it.latitude, it.longitude)
+                viewModel.setCoordinates(it.latitude, it.longitude)
                 binding.btGoToDetails.toVisible()
             }
         } else {

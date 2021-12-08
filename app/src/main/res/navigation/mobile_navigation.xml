@@ -21,7 +21,13 @@
             <argument
                 android:name="city"
                 app:argType="string"
-                app:nullable="true" />
+                app:nullable="true"/>
+            <argument
+                android:name="lat"
+                app:argType="float"/>
+            <argument
+                android:name="lon"
+                app:argType="float"/>
         </action>
     </fragment>
 
@@ -33,5 +39,11 @@
         <argument
             android:name="city"
             app:argType="string" />
+        <argument
+            android:name="lat"
+            app:argType="float"/>
+        <argument
+            android:name="lon"
+            app:argType="float"/>
     </fragment>
 </navigation>
