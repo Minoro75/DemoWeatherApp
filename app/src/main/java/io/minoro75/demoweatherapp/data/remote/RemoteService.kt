@@ -2,7 +2,6 @@ package io.minoro75.demoweatherapp.data.remote
 
 import io.minoro75.demoweatherapp.BuildConfig
 import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
-import io.minoro75.demoweatherapp.domain.geocoding.model.CoordinatesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,8 +12,8 @@ interface RemoteService {
         @Query(value = "lon") lon: Double
     ): ForecastResponse
 
-    @GET("/geo/1.0/direct?limit=1&appid=${BuildConfig.API_KEY_OPENWEATHER}")
-    suspend fun getCoordinatesFromCityName(
-        @Query(value = "q") cityName: String
-    ): CoordinatesResponse
+    @GET("https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000")
+    suspend fun getCitySuggestions(
+        @Query(value = "q") enteredQuery: String
+    ): SuggestionsResponse
 }
