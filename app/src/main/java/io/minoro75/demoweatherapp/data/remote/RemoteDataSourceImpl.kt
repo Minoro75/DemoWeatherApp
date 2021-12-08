@@ -8,15 +8,10 @@ import javax.inject.Inject
 class RemoteDataSourceImpl @Inject constructor(
     private val remoteService: RemoteService
 ) : RemoteDataSource {
-    override suspend fun getWeatherInCity(city: String): Flow<ForecastResponse> {
-        return flow {
-            emit(remoteService.getWeatherInCity(city).forecasts.forecastLocation)
-        }
-    }
 
-    override suspend fun getCityNameFromCoordinates(lat: Double, lon: Double): Flow<String> {
+    override suspend fun getForecastFromCoordinates(lat: Double, lon: Double): Flow<ForecastResponse> {
         return flow {
-            emit(remoteService.getCityNameFromCoordinates(lat, lon).observations.location.first().city)
+            emit(remoteService.getForecastFromCoordinates(lat, lon))
         }
     }
 }
