@@ -71,6 +71,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             findNavController().navigate(
                 CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
                     selectedCity?.suggestions?.cityName,
+                    // coordinates in response contained in array [lat,lon]
                     selectedCity?.suggestions?.coordinates?.get(0)?.toFloat() as Float,
                     selectedCity?.suggestions?.coordinates?.get(1)?.toFloat() as Float
                 )
@@ -85,13 +86,14 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         with(binding) {
             actvCityName.setAdapter(autoCompleteAdapter)
             actvCityName.threshold = 2
-            actvCityName.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
+            actvCityName.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                 selectedCity = autoCompleteAdapter.getItem(position)
                 actvCityName.setText(selectedCity?.suggestions?.cityName)
                 btGoToDetails.toVisible()
             }
             actvCityName.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                    // no-op
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -101,6 +103,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                 }
 
                 override fun afterTextChanged(s: Editable?) {
+                    // no-op
                 }
             })
             actvCityName.setOnDismissListener {
