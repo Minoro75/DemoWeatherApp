@@ -4,10 +4,11 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -22,10 +23,8 @@ import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import io.minoro75.demoweatherapp.R
 import io.minoro75.demoweatherapp.databinding.FragmentCitySelectionBinding
+import io.minoro75.demoweatherapp.domain.cities_suggestions.model.Suggestions
 import io.minoro75.demoweatherapp.utils.toVisible
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -37,33 +36,37 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
     private val fusedLocationProviderClient: FusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this.requireContext())
     }
-    private var selectedCity: String? = null
+    private var selectedCity: Suggestions? = null
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermissions()
-        val citiesList = mutableListOf<String>()
-        val scope = CoroutineScope(Job() + Dispatchers.IO)
+        val suggestions = mutableListOf<Suggestions>()
         val autoCompleteAdapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, citiesList)
-        scope.launch {
-            citiesList.addAll(resources.getStringArray(R.array.alabama_cities_list))
-            citiesList.addAll(resources.getStringArray(R.array.alaska_cities_list))
-            citiesList.addAll(resources.getStringArray(R.array.california_cities_list))
-            citiesList.addAll(resources.getStringArray(R.array.massachusetts_cities_list))
-            citiesList.addAll(resources.getStringArray(R.array.new_york_cities_list))
-            citiesList.addAll(resources.getStringArray(R.array.washington_cities_list))
-        }
-
+            CitySelectionAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, suggestions)
         with(binding) {
             actvCityName.setAdapter(autoCompleteAdapter)
             actvCityName.threshold = 2
             actvCityName.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
-                selectedCity = parent.getItemAtPosition(position).toString()
+                selectedCity = autoCompleteAdapter.getItem(position)
+                actvCityName.setText(selectedCity?.suggestions?.cityName)
                 btGoToDetails.toVisible()
             }
+            actvCityName.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (!actvCityName.isPerformingCompletion) {
+                        viewModel.getCitiesSuggestions(s.toString())
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
             actvCityName.setOnDismissListener {
                 hideKeyboard(view)
             }
@@ -71,21 +74,22 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                 getDeviceLocation()
             }
             btGoToDetails.setOnClickListener {
-                if (!selectedCity.isNullOrEmpty()) {
+                if (selectedCity != null) {
                     findNavController().navigate(
                         CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
-                            selectedCity,
-                            viewModel.latitude.value.toFloat(),
-                            viewModel.longitude.value.toFloat()
+                            selectedCity?.suggestions?.cityName,
+                            selectedCity?.suggestions?.coordinates?.get(0)?.toFloat() as Float,
+                            selectedCity?.suggestions?.coordinates?.get(1)?.toFloat() as Float
                         )
                     )
                 }
             }
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.city.collect {
-                        actvCityName.setText(it)
-                        selectedCity = it
+                    viewModel.suggestions.collect {
+                        if (it != null) {
+                            autoCompleteAdapter.addAllDataToSuggestionsList(it)
+                        }
                     }
                 }
             }

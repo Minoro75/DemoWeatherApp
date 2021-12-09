@@ -87,6 +87,7 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
     }
 
     private fun FragmentCityForecastBinding.setCurrentWeather(resourceList: Resource<List<Forecast>>) {
+        tvCurrentLocation.text = args.city
         tvCurrentWeatherTemp.text =
             getString(
                 R.string.temperature_item, resourceList.data?.first()?.temperature?.min?.toInt(),

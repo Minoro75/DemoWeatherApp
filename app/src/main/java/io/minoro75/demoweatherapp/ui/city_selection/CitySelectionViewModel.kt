@@ -1,19 +1,20 @@
 package io.minoro75.demoweatherapp.ui.city_selection
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.minoro75.demoweatherapp.domain.city_name.usecase.GetCityNameUseCase
+import io.minoro75.demoweatherapp.domain.cities_suggestions.model.Suggestions
+import io.minoro75.demoweatherapp.domain.cities_suggestions.usecase.GetSuggestionsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CitySelectionViewModel @Inject constructor(
-    private val getCityNameUseCase: GetCityNameUseCase
+    private val getSuggestionsUseCase: GetSuggestionsUseCase
 ) : ViewModel() {
-
-    private val _city = MutableStateFlow("")
-    val city: StateFlow<String> = _city
 
     private val _latitude = MutableStateFlow(0.0)
     val latitude: StateFlow<Double> = _latitude
@@ -21,13 +22,17 @@ class CitySelectionViewModel @Inject constructor(
     private val _longitude = MutableStateFlow(0.0)
     val longitude: StateFlow<Double> = _longitude
 
-    /* fun getCityNameFromCoordinates(lat: Double, lon: Double) {
-         viewModelScope.launch {
-             getCityNameUseCase(lat, lon).collect {
-                 _city.emit(it)
-             }
-         }
-     }*/
+    private val _suggestions = MutableStateFlow<List<Suggestions>?>(null)
+    val suggestions: StateFlow<List<Suggestions>?> = _suggestions
+
+    fun getCitiesSuggestions(enteredRequest: String) {
+        viewModelScope.launch {
+            getSuggestionsUseCase.invoke(enteredRequest).collect {
+                _suggestions.emit(it.records)
+            }
+        }
+    }
+
     fun setCoordinates(lat: Double, lon: Double) {
         _latitude.value = lat
         _longitude.value = lon
