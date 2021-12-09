@@ -47,6 +47,42 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         val autoCompleteAdapter =
             CitySelectionAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, suggestions)
         with(binding) {
+            setAutoCompleteTextView(autoCompleteAdapter, view)
+            ibGetCurrentLocation.setOnClickListener {
+                getDeviceLocation()
+            }
+            btGoToDetails.setOnClickListener {
+                goToCityWeatherFragment()
+            }
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.suggestions.collect {
+                        if (it != null) {
+                            autoCompleteAdapter.addAllDataToSuggestionsList(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun goToCityWeatherFragment() {
+        if (selectedCity != null) {
+            findNavController().navigate(
+                CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
+                    selectedCity?.suggestions?.cityName,
+                    selectedCity?.suggestions?.coordinates?.get(0)?.toFloat() as Float,
+                    selectedCity?.suggestions?.coordinates?.get(1)?.toFloat() as Float
+                )
+            )
+        }
+    }
+
+    private fun setAutoCompleteTextView(
+        autoCompleteAdapter: CitySelectionAdapter,
+        view: View
+    ) {
+        with(binding) {
             actvCityName.setAdapter(autoCompleteAdapter)
             actvCityName.threshold = 2
             actvCityName.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
@@ -69,29 +105,6 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
             })
             actvCityName.setOnDismissListener {
                 hideKeyboard(view)
-            }
-            ibGetCurrentLocation.setOnClickListener {
-                getDeviceLocation()
-            }
-            btGoToDetails.setOnClickListener {
-                if (selectedCity != null) {
-                    findNavController().navigate(
-                        CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
-                            selectedCity?.suggestions?.cityName,
-                            selectedCity?.suggestions?.coordinates?.get(0)?.toFloat() as Float,
-                            selectedCity?.suggestions?.coordinates?.get(1)?.toFloat() as Float
-                        )
-                    )
-                }
-            }
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.suggestions.collect {
-                        if (it != null) {
-                            autoCompleteAdapter.addAllDataToSuggestionsList(it)
-                        }
-                    }
-                }
             }
         }
     }
