@@ -9,3 +9,7 @@ fun View.toVisible() {
 fun View.toInvisible() {
     visibility = View.INVISIBLE
 }
+
+fun View.toGone() {
+    visibility = View.GONE
+}
