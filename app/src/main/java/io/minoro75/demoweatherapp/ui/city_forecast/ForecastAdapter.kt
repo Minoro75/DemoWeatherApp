@@ -36,7 +36,7 @@ class ForecastAdapter(private val weatherList: ArrayList<Forecast>) :
             itemView.findViewById<TextView>(R.id.tvDescription).text = forecast.iconList.first().iconDescription
             itemView.findViewById<TextView>(R.id.tvDate).text = forecast.currentTime.toString()
             Glide.with(itemView)
-                .load("https://openweathermap.org/img/wn/${forecast.iconList.first().iconLink}.png")
+                .load("https://openweathermap.org/img/wn/${forecast.iconList.first().iconLink}@4x.png")
                 .into(itemView.findViewById(R.id.ivIcon))
         }
     }

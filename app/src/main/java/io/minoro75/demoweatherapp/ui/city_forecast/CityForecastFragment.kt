@@ -41,7 +41,7 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
                 weatherAdapter.clear()
                 viewModel.getWeatherInCity(args.lat.toDouble(), args.lon.toDouble())
             }
-            srlSwipeContainer.setColorSchemeResources(R.color.primaryDarkColor)
+            srlSwipeContainer.setColorSchemeResources(R.color.md_theme_light_primary)
             btBack.setOnClickListener { findNavController().navigateUp() }
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {

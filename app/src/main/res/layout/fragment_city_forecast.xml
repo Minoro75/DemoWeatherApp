@@ -14,6 +14,8 @@
         android:layout_height="240dp"
         android:elevation="4dp"
         app:cardBackgroundColor="@color/md_theme_light_primary"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

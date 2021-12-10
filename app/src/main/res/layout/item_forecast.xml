@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="90dp">
 
-        <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvWeatherItem"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -14,8 +14,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/md_theme_light_surfaceVariant"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,10 +31,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                tools:text="18 December"
                 android:textColor="@color/md_theme_light_onSurfaceVariant"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="18 December" />
 
             <ImageView
                 android:id="@+id/ivIcon"
@@ -53,27 +53,27 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                tools:text="Rain"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/md_theme_light_onSurfaceVariant"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivIcon" />
+                app:layout_constraintStart_toEndOf="@+id/ivIcon"
+                tools:text="Rain" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
-                tools:text="+47"
                 android:textColor="@color/md_theme_light_onSurfaceVariant"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/tvDescription"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="+47" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
