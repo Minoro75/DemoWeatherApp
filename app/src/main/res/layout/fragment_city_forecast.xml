@@ -5,7 +5,7 @@
     android:id="@+id/clCityWeather"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface"
+    android:background="@color/md_theme_light_background"
     tools:context=".ui.city_forecast.CityForecastFragment">
 
     <com.google.android.material.card.MaterialCardView
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:elevation="4dp"
-        app:cardBackgroundColor="@color/primaryDarkColor"
+        app:cardBackgroundColor="@color/md_theme_light_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,33 +24,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCurrentWeatherTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="80dp"
                 android:layout_marginBottom="32dp"
-                android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/design_default_color_on_primary"
+                android:textColor="@color/md_theme_light_onPrimary"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvCurrentWeatherDescription"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="+48" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCurrentWeatherDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="80dp"
                 android:layout_marginBottom="32dp"
-                android:text="TextView"
-                android:textColor="@color/design_default_color_background"
+                android:textColor="@color/md_theme_light_onPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Rain" />
 
             <ImageView
                 android:id="@+id/ivCurrentWeatherIcon"
@@ -62,27 +62,29 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvCurrentWeatherDescription" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCurrentLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/design_default_color_on_primary"
+                android:textColor="@color/md_theme_light_onPrimary"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Uganda" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCurrentDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:textColor="@color/design_default_color_background"
+                android:textColor="@color/md_theme_light_onPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation"
+                tools:text="18 December" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btBack"
@@ -92,11 +94,11 @@
                 android:layout_marginTop="16dp"
                 android:background="#000191FF"
                 android:text="@string/back"
-                android:textColor="@color/design_default_color_background"
+                android:textColor="@color/md_theme_light_onPrimary"
                 app:icon="@drawable/left_arrow"
                 app:iconGravity="start"
                 app:iconSize="14dp"
-                app:iconTint="@color/design_default_color_background"
+                app:iconTint="@color/md_theme_light_onPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,7 +111,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:indeterminate="true"
-        app:indicatorColor="@color/primaryDarkColor"
+        app:indicatorColor="@color/md_theme_light_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +131,7 @@
             android:id="@+id/rvWeatherList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/surface"
+            android:background="@color/md_theme_light_background"
 
             tools:listitem="@layout/item_forecast" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
