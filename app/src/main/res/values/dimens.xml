@@ -7,7 +7,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="corner_radius_bottom">24dp</dimen>
     <dimen name="small_padding">4dp</dimen>
-    <dimen name="standart_padding">8dp</dimen>
+    <dimen name="standard_padding">8dp</dimen>
     <dimen name="large_padding">16dp</dimen>
     <dimen name="extra_large_padding">32dp</dimen>
+    <dimen name="small_elevation">4dp</dimen>
+    <dimen name="corners_rounding_default">8dp</dimen>
 </resources>
