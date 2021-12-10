@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -97,8 +99,12 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (!actvCityName.isPerformingCompletion) {
-                        viewModel.getCitiesSuggestions(s.toString())
+                    val handler = Handler(Looper.getMainLooper())
+
+                    if (!actvCityName.isPerformingCompletion && s.toString().length > 1) {
+                        // if user writes one more symbol - cancel task and prevent requests spam
+                        handler.removeMessages(0)
+                        handler.postDelayed({ viewModel.getCitiesSuggestions(s.toString()) }, 1000)
                     }
                 }
 
