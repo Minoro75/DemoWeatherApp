@@ -23,6 +23,8 @@ import io.minoro75.demoweatherapp.utils.toInvisible
 import io.minoro75.demoweatherapp.utils.toVisible
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @AndroidEntryPoint
 class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
@@ -49,15 +51,9 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
                     viewModel.weather.collect { resourceList ->
                         when (resourceList.status) {
                             is Status.SUCCESS -> {
-                                // TODO: 12/7/2021 extract functions
                                 piCityWeather.toInvisible()
                                 rvWeatherList.toVisible()
                                 clCurrentWeather.toVisible()
-                                // TODO: 12/7/2021 simplify this block and cleanup  this mess
-                                /*val responseUtcFormat =
-                                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
-                                val date = responseUtcFormat.parse(resourceList.data?.first()?.utcTime)
-                                val simpleDateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.getDefault())*/
                                 srlSwipeContainer.isRefreshing = false
                                 weatherAdapter.clear()
                                 weatherAdapter.addList(resourceList.data)
@@ -86,18 +82,22 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
         }
     }
 
-    private fun FragmentCityForecastBinding.setCurrentWeather(resourceList: Resource<List<Forecast>>) {
-        tvCurrentLocation.text = args.city
-        tvCurrentWeatherTemp.text =
-            getString(
-                R.string.temperature_item, resourceList.data?.first()?.temperature?.min?.toInt(),
-                resourceList.data?.first()?.temperature?.max?.toInt()
-            )
-        tvCurrentDate.text = resourceList.data?.first()?.currentTime.toString()
-        tvCurrentWeatherDescription.text =
-            resourceList.data?.first()?.iconList?.first()?.iconDescription
-        Glide.with(requireContext())
-            .load("https://openweathermap.org/img/wn/${resourceList.data?.first()?.iconList?.first()?.iconLink}@2x.png")
-            .into(ivCurrentWeatherIcon)
+    private fun setCurrentWeather(resourceList: Resource<List<Forecast>>) {
+        with(binding) {
+            // transform UNIX timestamp from response into java Date class
+            val date = Date(resourceList.data?.first()?.currentTime?.toLong()?.times(1000) as Long)
+            tvCurrentLocation.text = args.city
+            tvCurrentWeatherTemp.text =
+                getString(
+                    R.string.temperature_item, resourceList.data.first().temperature?.min?.toInt(),
+                    resourceList.data.first().temperature?.max?.toInt()
+                )
+            tvCurrentDate.text = SimpleDateFormat("dd MMMM").format(date)
+            tvCurrentWeatherDescription.text =
+                resourceList.data.first().iconList.first().iconDescription
+            Glide.with(requireContext())
+                .load("https://openweathermap.org/img/wn/${resourceList.data.first().iconList.first().iconLink}@2x.png")
+                .into(ivCurrentWeatherIcon)
+        }
     }
 }
