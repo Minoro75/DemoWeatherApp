@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
@@ -92,7 +93,7 @@ class CityForecastFragment : Fragment(R.layout.fragment_city_forecast) {
                     R.string.temperature_item, resourceList.data.first().temperature?.min?.toInt(),
                     resourceList.data.first().temperature?.max?.toInt()
                 )
-            tvCurrentDate.text = SimpleDateFormat("dd MMMM").format(date)
+            tvCurrentDate.text = SimpleDateFormat("dd MMMM", Locale.getDefault()).format(date)
             tvCurrentWeatherDescription.text =
                 resourceList.data.first().iconList.first().iconDescription
             Glide.with(requireContext())
