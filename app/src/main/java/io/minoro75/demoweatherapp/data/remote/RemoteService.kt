@@ -17,4 +17,10 @@ interface RemoteService {
     suspend fun getCitySuggestions(
         @Query(value = "q") enteredQuery: String
     ): SuggestionsResponse
+
+    @GET("/geo/1.0/reverse?appid=${BuildConfig.API_KEY_OPENWEATHER}")
+    suspend fun getCityNameFromCoordinates(
+        @Query(value = "lat") lat: Double,
+        @Query(value = "lon") lon: Double
+    ): CityNameResponse
 }
