@@ -3,6 +3,7 @@ package io.minoro75.demoweatherapp.data.remote
 import io.minoro75.demoweatherapp.BuildConfig
 import io.minoro75.demoweatherapp.domain.cities_suggestions.model.SuggestionsResponse
 import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
+import io.minoro75.demoweatherapp.domain.geocoding.model.CityNameResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,4 +18,10 @@ interface RemoteService {
     suspend fun getCitySuggestions(
         @Query(value = "q") enteredQuery: String
     ): SuggestionsResponse
+
+    @GET("/geo/1.0/reverse?limit=1&appid=${BuildConfig.API_KEY_OPENWEATHER}")
+    suspend fun getCityNameFromCoordinates(
+        @Query(value = "lat") lat: Double,
+        @Query(value = "lon") lon: Double
+    ): List<CityNameResponse>
 }

@@ -39,6 +39,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         LocationServices.getFusedLocationProviderClient(this.requireContext())
     }
     private var selectedCity: Suggestions? = null
+    private var cityName: String? = null
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
 
@@ -54,7 +55,7 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
                 getDeviceLocation()
             }
             btGoToDetails.setOnClickListener {
-                goToCityWeatherFragment()
+                goToCityWeatherFragment(false)
             }
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -68,14 +69,22 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         }
     }
 
-    private fun goToCityWeatherFragment() {
-        if (selectedCity != null) {
+    private fun goToCityWeatherFragment(isLocationProviderUsed: Boolean) {
+        if (selectedCity != null && !isLocationProviderUsed) {
             findNavController().navigate(
                 CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
                     selectedCity?.suggestions?.cityName,
                     // coordinates in response contained in array [lat,lon]
                     selectedCity?.suggestions?.coordinates?.get(0)?.toFloat() as Float,
                     selectedCity?.suggestions?.coordinates?.get(1)?.toFloat() as Float
+                )
+            )
+        } else {
+            findNavController().navigate(
+                CitySelectionFragmentDirections.actionNavCitySelectionToNavCityWeather(
+                    cityName,
+                    viewModel.latitude.value.toFloat(),
+                    viewModel.longitude.value.toFloat()
                 )
             )
         }
@@ -140,7 +149,8 @@ class CitySelectionFragment : Fragment(R.layout.fragment_city_selection) {
         ) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
                 viewModel.setCoordinates(it.latitude, it.longitude)
-                binding.btGoToDetails.toVisible()
+                cityName = viewModel.getCityNameFromCoordinates(it.latitude, it.longitude)
+                goToCityWeatherFragment(true)
             }
         } else {
             requestPermissions()

@@ -5,15 +5,18 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.minoro75.demoweatherapp.domain.cities_suggestions.model.Suggestions
 import io.minoro75.demoweatherapp.domain.cities_suggestions.usecase.GetSuggestionsUseCase
+import io.minoro75.demoweatherapp.domain.geocoding.usecase.GetCityNameUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
 class CitySelectionViewModel @Inject constructor(
-    private val getSuggestionsUseCase: GetSuggestionsUseCase
+    private val getSuggestionsUseCase: GetSuggestionsUseCase,
+    private val getCityNameUseCase: GetCityNameUseCase
 ) : ViewModel() {
 
     private val _latitude = MutableStateFlow(0.0)
@@ -31,6 +34,17 @@ class CitySelectionViewModel @Inject constructor(
                 _suggestions.emit(it.records)
             }
         }
+    }
+
+    fun getCityNameFromCoordinates(lat: Double, lon: Double): String {
+        // TODO: 12/13/2021 Tech Debt: find a better solution for this issue
+        var city = ""
+        runBlocking {
+            getCityNameUseCase.invoke(lat, lon).collect {
+                city = it.cityName
+            }
+        }
+        return city
     }
 
     fun setCoordinates(lat: Double, lon: Double) {

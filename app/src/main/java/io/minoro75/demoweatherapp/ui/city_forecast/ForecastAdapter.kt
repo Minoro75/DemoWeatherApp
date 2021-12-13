@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import io.minoro75.demoweatherapp.R
 import io.minoro75.demoweatherapp.domain.forecast.model.Forecast
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ForecastAdapter(private val weatherList: ArrayList<Forecast>) :
     RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
@@ -24,9 +27,7 @@ class ForecastAdapter(private val weatherList: ArrayList<Forecast>) :
 
     class ForecastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(forecast: Forecast) {
-            /* val responseUtcFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
-             val date = responseUtcFormat.parse(forecast.utcTime)
-             val dateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.getDefault()) */
+            val date = Date(forecast.currentTime?.toLong()?.times(1000) as Long)
             itemView.findViewById<TextView>(R.id.tvTemperature).text =
                 itemView.context.getString(
                     R.string.temperature_item,
@@ -34,9 +35,10 @@ class ForecastAdapter(private val weatherList: ArrayList<Forecast>) :
                     forecast.temperature?.max?.toInt()
                 )
             itemView.findViewById<TextView>(R.id.tvDescription).text = forecast.iconList.first().iconDescription
-            itemView.findViewById<TextView>(R.id.tvDate).text = forecast.currentTime.toString()
+            itemView.findViewById<TextView>(R.id.tvDate).text =
+                SimpleDateFormat("dd MMMM", Locale.getDefault()).format(date)
             Glide.with(itemView)
-                .load("https://openweathermap.org/img/wn/${forecast.iconList.first().iconLink}.png")
+                .load("https://openweathermap.org/img/wn/${forecast.iconList.first().iconLink}@4x.png")
                 .into(itemView.findViewById(R.id.ivIcon))
         }
     }

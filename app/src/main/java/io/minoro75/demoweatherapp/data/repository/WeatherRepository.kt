@@ -3,6 +3,7 @@ package io.minoro75.demoweatherapp.data.repository
 import io.minoro75.demoweatherapp.data.remote.RemoteDataSourceImpl
 import io.minoro75.demoweatherapp.domain.cities_suggestions.model.SuggestionsResponse
 import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
+import io.minoro75.demoweatherapp.domain.geocoding.model.CityNameResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -17,5 +18,9 @@ class WeatherRepository @Inject constructor(
 
     suspend fun getCitiesSuggestions(enteredRequest: String): Flow<SuggestionsResponse> =
         remoteDataSourceImpl.getCitiesSuggestions(enteredRequest)
+            .flowOn(Dispatchers.IO)
+
+    suspend fun getCityNameFromCoordinates(lat: Double, lon: Double): Flow<CityNameResponse> =
+        remoteDataSourceImpl.getCityNameFromCoordinates(lat, lon)
             .flowOn(Dispatchers.IO)
 }
