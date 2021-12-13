@@ -57,4 +57,16 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="@dimen/extra_large_padding"
+        android:layout_marginTop="131dp"
+        android:layout_marginEnd="@dimen/extra_large_padding"
+        android:src="@drawable/main_screen_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actvCityName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
