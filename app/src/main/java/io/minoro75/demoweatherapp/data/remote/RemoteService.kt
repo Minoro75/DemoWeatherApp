@@ -3,6 +3,7 @@ package io.minoro75.demoweatherapp.data.remote
 import io.minoro75.demoweatherapp.BuildConfig
 import io.minoro75.demoweatherapp.domain.cities_suggestions.model.SuggestionsResponse
 import io.minoro75.demoweatherapp.domain.forecast.model.ForecastResponse
+import io.minoro75.demoweatherapp.domain.geocoding.model.CityNameResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
