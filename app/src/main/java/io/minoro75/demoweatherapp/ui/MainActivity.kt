@@ -18,6 +18,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp()
+        return findNavController(R.id.navHostFragment).navigateUp()
     }
 }
