@@ -5,5 +5,5 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CityNameResponse(
-    @Json(name = "name") var cityName: String? = null
+    @Json(name = "name") var cityName: String
 )

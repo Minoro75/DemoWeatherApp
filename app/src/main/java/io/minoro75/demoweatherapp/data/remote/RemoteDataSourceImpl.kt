@@ -25,7 +25,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getCityNameFromCoordinates(lat: Double, lon: Double): Flow<CityNameResponse> {
         return flow {
-            emit(remoteService.getCityNameFromCoordinates(lat, lon))
+            emit(remoteService.getCityNameFromCoordinates(lat, lon).first())
         }
     }
 }

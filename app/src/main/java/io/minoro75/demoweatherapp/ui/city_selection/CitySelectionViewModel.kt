@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,9 +25,6 @@ class CitySelectionViewModel @Inject constructor(
     private val _longitude = MutableStateFlow(0.0)
     val longitude: StateFlow<Double> = _longitude
 
-    private val _cityName = MutableStateFlow("")
-    val cityName: StateFlow<String> = _cityName
-
     private val _suggestions = MutableStateFlow<List<Suggestions>?>(null)
     val suggestions: StateFlow<List<Suggestions>?> = _suggestions
 
@@ -38,12 +36,15 @@ class CitySelectionViewModel @Inject constructor(
         }
     }
 
-    fun getCityNameFromCoordinates(lat: Double, lon: Double) {
-        viewModelScope.launch {
+    fun getCityNameFromCoordinates(lat: Double, lon: Double): String {
+        // TODO: 12/13/2021 Tech Debt: find a better solution for this issue
+        var city = ""
+        runBlocking {
             getCityNameUseCase.invoke(lat, lon).collect {
-                _cityName.emit(it.cityName.toString())
+                city = it.cityName
             }
         }
+        return city
     }
 
     fun setCoordinates(lat: Double, lon: Double) {
