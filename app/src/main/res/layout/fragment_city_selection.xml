@@ -36,7 +36,7 @@
         android:layout_marginEnd="@dimen/extra_large_padding"
         android:layout_marginBottom="@dimen/extra_large_padding"
         android:elevation="@dimen/standard_elevation"
-        android:src="@mipmap/outline_share_location_black_48"
+        android:src="@drawable/share_location_black_48dp"
         android:tint="@color/md_theme_light_onPrimary"
         app:layout_constraintBottom_toTopOf="@+id/btGoToDetails"
         app:layout_constraintEnd_toEndOf="parent" />
